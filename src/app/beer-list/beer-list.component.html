@@ -1,0 +1,26 @@
+<table class="table table-border">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Name </th>
+            <th> Tagline </th>
+            <th> First brewed </th>
+            <th> ABV </th>
+            <th> IBU </th>
+            <th> EBC </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let beer of beers" class="playlist-row" (click)="showDetails(beer)">
+            <td> {{ beer.id }}. </td>
+            <td> {{ beer.name }} </td>
+            <td> {{ beer.tagline || "" }} </td>
+            <td> {{ beer.first_brewed || "" }} </td>
+            <td> {{ beer.abv || "" }} </td>
+            <td> {{ beer.ibu || "" }} </td>
+            <td> {{ beer.ebc || "" }} </td>
+        </tr>
+    </tbody>
+
+</table>
+
