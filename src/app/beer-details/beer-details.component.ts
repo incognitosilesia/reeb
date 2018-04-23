@@ -11,19 +11,20 @@ import { Subject, Observable } from "rxjs";
 })
 export class BeerDetailsComponent implements OnInit {
 
+  beer;
+
   constructor(private activeRoute: ActivatedRoute,
               private router: Router,
               private beerService: BeerService) { }
 
-  beer;
-
   ngOnInit() {
     this.activeRoute.params.subscribe((params => {
       let id = params["id"];
-      console.log(id);
       this.beerService.getBeerStream(id).subscribe((beer => {
-        this.beer = Object.assign({}, beer);
-        console.log(this.beer);
+        console.log(beer);
+        if (beer) {
+          this.beer = beer[0];
+        }
       }))
     }))
   }

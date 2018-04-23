@@ -1,7 +1,19 @@
+<ng-container *ngIf="beer">
 <p>
- beer detail {{(beer.id)}}
+ beer name {{beer.name}}
  </p>
 <p>
- name {{beer.name}}
+ description: {{beer.description}}
  </p>
-
+<p>
+ food_pairing: {{beer.food_pairing}}
+ </p>
+<p>
+ brewer_tips: {{beer.brewers_tips}}
+ </p>
+<p>
+ image 
+ {{beer.image_url}}
+ <img [src]="beer.image_url">
+ </p>
+ </ng-container>

@@ -13,7 +13,7 @@ export class BeerService {
 
 
   getBeerList(){
-    return this.http.get(`${this.beerApiUrl}?per_page=1`);
+    return this.http.get(`${this.beerApiUrl}?per_page=6`);
   }
 
   getBeer(id){
