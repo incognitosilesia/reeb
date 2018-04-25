@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from "@angular/router";
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 import { AppComponent } from './app.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
@@ -20,6 +21,7 @@ import { BeerService } from './beer.service';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     FormsModule,
     HttpModule,
     HttpClientModule,

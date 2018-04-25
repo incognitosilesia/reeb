@@ -1,4 +1,6 @@
-<table class="table table-border">
+<div class="spinner" *ngIf="spinner">sjfhkkshr</div>
+
+<table class="beer-table">
     <thead>
         <tr>
             <th> # </th>
@@ -11,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let beer of beers" class="playlist-row" (click)="showDetails(beer)">
+        <tr *ngFor="let beer of beers | paginate: { itemsPerPage: 2, currentPage: p }" (click)="showDetails(beer)">
             <td> {{ beer.id }}. </td>
             <td> {{ beer.name }} </td>
             <td> {{ beer.tagline || "" }} </td>
@@ -21,6 +23,10 @@
             <td> {{ beer.ebc || "" }} </td>
         </tr>
     </tbody>
-
 </table>
+
+ <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+   
+
 

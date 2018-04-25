@@ -1,5 +1,5 @@
 import { BeerService } from './../beer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -9,15 +9,23 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class BeerListComponent implements OnInit {
 
+  beers;
+  
+  p: number = 1;
+  spinner: boolean = false;
+
   constructor(private BeerService: BeerService,
               private router: Router) { }
 
-  beers;
+
 
   ngOnInit() {
 
+    this.spinner = true;
+
     this.BeerService.getBeerList().subscribe((beers => {
       this.beers = beers;
+      this.spinner = false;
     }))
   }
 

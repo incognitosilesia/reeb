@@ -1,19 +1,32 @@
+<div class="spinner" *ngIf="spinner">sjfhkkshr</div>
+
+
 <ng-container *ngIf="beer">
-<p>
- beer name {{beer.name}}
- </p>
-<p>
- description: {{beer.description}}
- </p>
-<p>
- food_pairing: {{beer.food_pairing}}
- </p>
-<p>
- brewer_tips: {{beer.brewers_tips}}
- </p>
-<p>
- image 
- {{beer.image_url}}
- <img [src]="beer.image_url">
- </p>
- </ng-container>
+    <h2 class="beer-name">{{beer.name}}</h2>
+
+    <section class="beer-details">
+
+        <div class="beer-image">
+            <figure class="beer-description_image">
+                <img [src]="beer.image_url">
+            </figure>
+
+        </div>
+
+        <div class="beer-description">
+            <h3>About:</h3>
+            <p class="beer-description_description"> {{beer.description}}</p>
+
+            <h3>Compose with:</h3>
+            <ul class="beer-description_food_pairing" *ngFor="let food of foods"> 
+               <li><i class="fas fa-utensils"></i> {{food}}</li>
+            </ul>
+            <h3>Tips:</h3>
+            <p class="beer-description_brewers_tips"> {{beer.brewers_tips}}</p>
+
+        </div>
+    </section>
+
+    <button class="back-button" (click)="backToList()">Back to list</button>
+
+</ng-container>
