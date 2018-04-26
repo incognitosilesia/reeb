@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import "rxjs/Rx";
-import { Subject, Observable } from "rxjs";
-import { Beer } from "./beer";
+import { Subject, Observable, Subscription } from "rxjs";
+import { Beer } from "./beer.interface";
 
 @Injectable()
 export class BeerService {
@@ -13,18 +13,19 @@ export class BeerService {
 
   /**
    * Function represents the list of beers from PunkApi
-   * @returns {Observable}
+   * @returns {Observable}<Beer[]> 
    */
-  getBeerList():Observable<any> {
-    return this.http.get(`${this.beerApiUrl}?page=1&per_page=70`);
+  getBeerList(page):Observable<Beer[]> {
+    console.log(page);
+    return this.http.get<Beer[]>(`${this.beerApiUrl}?page=${page}&per_page=25`);
   }
 
     /**
    * Function represents chosen/clicked by user single beer
    * @param {string} id
-   * @returns {Object} beer
+   * @returns {Subscription}
    */
-  getBeer(id: string){
+  getBeer(id: string):Subscription{
     return this.http.get(`${this.beerApiUrl}/${id}`).subscribe(beer => {
       this.beer = beer;
       this.beerStream$.next(this.beer);
@@ -36,7 +37,7 @@ export class BeerService {
     /**
    * Function represents chosen/clicked by user single beer
    * @param {string} id
-   * @returns {Observable} beer
+   * @returns {Observable} <Beer>
    */
   getBeerStream(id: string): Observable<Beer> {
     this.getBeer(id);

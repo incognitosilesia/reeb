@@ -12,16 +12,17 @@ import { AppComponent } from './app.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { BeerService } from './beer.service';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeerListComponent,
-    BeerDetailsComponent
+    BeerDetailsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
-    NgxPaginationModule,
     FormsModule,
     HttpModule,
     HttpClientModule,

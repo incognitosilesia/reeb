@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let beer of beers | paginate: { itemsPerPage: 10, currentPage: p }" (click)="showDetails(beer)">
+         <tr *ngFor="let beer of beers" (click)="showDetails(beer)"> 
             <td class="short"> {{ beer.id }}. </td>
             <td> {{ beer.name }} </td>
             <td> {{ beer.tagline || "" }} </td>
@@ -29,8 +29,14 @@
     </tbody>
 </table>
 
- <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-   
+<my-pagination
+  (goPage)="goToPage($event)"
+  (goNext)="onNext()"
+  (goPrev)="onPrev()"
+  [pagesToShow]="7"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total">
+</my-pagination>
 
 

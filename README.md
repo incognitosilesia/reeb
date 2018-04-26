@@ -19,6 +19,9 @@ then:
 
  Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Contribution
 
+GIF by: GIPHY
+Pagination help: http://www.bentedder.com/create-a-pagination-component-in-angular-4/
 
 

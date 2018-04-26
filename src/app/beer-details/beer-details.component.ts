@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BeerService } from "./../beer.service";
 import "rxjs/Rx";
 import { Subject, Observable } from "rxjs";
-import { Beer } from "../beer";
+import { Beer } from "../beer.interface";
 
 @Component({
   selector: "app-beer-details",
@@ -12,7 +12,7 @@ import { Beer } from "../beer";
   encapsulation: ViewEncapsulation.None
 })
 export class BeerDetailsComponent implements OnInit {
-  beer;
+  beer:Beer;
   foods: string[];
   spinner: boolean = false;
 
