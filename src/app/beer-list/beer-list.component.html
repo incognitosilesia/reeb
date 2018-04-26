@@ -1,31 +1,41 @@
-<div class="spinner" *ngIf="spinner">sjfhkkshr</div>
+<div class="spinner" *ngIf="spinner">
+    <iframe src="https://giphy.com/embed/3o85xjSETVG3OpPyx2" width="480" height="480" margin="20px auto" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beer-alcohol-toast-3o85xjSETVG3OpPyx2">via GIPHY</a></p>
+</div>
+
+<h1 class="invitation">Welcome to the Beer Kingdom</h1>
 
 <table class="beer-table">
     <thead>
         <tr>
-            <th> # </th>
+            <th class="short"> # </th>
             <th> Name </th>
             <th> Tagline </th>
             <th> First brewed </th>
-            <th> ABV </th>
-            <th> IBU </th>
-            <th> EBC </th>
+            <th class="short"> ABV </th>
+            <th class="short"> IBU </th>
+            <th class="short"> EBC </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let beer of beers | paginate: { itemsPerPage: 2, currentPage: p }" (click)="showDetails(beer)">
-            <td> {{ beer.id }}. </td>
+        <tr *ngFor="let beer of beers | paginate: { itemsPerPage: 10, currentPage: p }" (click)="showDetails(beer)">
+            <td class="short"> {{ beer.id }}. </td>
             <td> {{ beer.name }} </td>
             <td> {{ beer.tagline || "" }} </td>
             <td> {{ beer.first_brewed || "" }} </td>
-            <td> {{ beer.abv || "" }} </td>
-            <td> {{ beer.ibu || "" }} </td>
-            <td> {{ beer.ebc || "" }} </td>
+            <td class="short"> {{ beer.abv || "" }} </td>
+            <td class="short"> {{ beer.ibu || "" }} </td>
+            <td class="short"> {{ beer.ebc || "" }} </td>
         </tr>
     </tbody>
 </table>
 
- <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<ul>
+    <li (pageChanges)="p = $event">1</li>
+    <li (pageChanges)="p = $event">2</li>
+    <li (pageChanges)="p = $event">3</li>
+</ul>
+
+ <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
 
    
 
