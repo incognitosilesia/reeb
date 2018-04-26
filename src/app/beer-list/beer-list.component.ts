@@ -27,8 +27,13 @@ export class BeerListComponent implements OnInit {
     }))
   }
 
+    /**
+   * Function redirects to chosen beer page
+   * @param {object}
+   * @return {undefined}
+   */
   showDetails(beer:Beer){
-    console.log("beer.id",beer.id);
+    console.log(typeof beer, beer)
     this.router.navigate(["details", beer.id]);
   }
 
