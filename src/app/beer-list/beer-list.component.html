@@ -1,5 +1,7 @@
 <div class="spinner" *ngIf="spinner">
-    <iframe src="https://giphy.com/embed/3o85xjSETVG3OpPyx2" width="480" height="480" margin="20px auto" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beer-alcohol-toast-3o85xjSETVG3OpPyx2">via GIPHY</a></p>
+    <iframe src="https://giphy.com/embed/3o85xjSETVG3OpPyx2" width="480" height="480" margin="20px auto" frameBorder="0" class="giphy-embed"
+        allowFullScreen></iframe>
+    <p><a href="https://giphy.com/gifs/beer-alcohol-toast-3o85xjSETVG3OpPyx2">via GIPHY</a></p>
 </div>
 
 <h1 class="invitation">Welcome to the Beer Kingdom</h1>
@@ -17,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-         <tr *ngFor="let beer of beers" (click)="showDetails(beer)"> 
+        <tr *ngFor="let beer of beers" (click)="showDetails(beer)">
             <td class="short"> {{ beer.id }}. </td>
             <td> {{ beer.name }} </td>
             <td> {{ beer.tagline || "" }} </td>
@@ -29,14 +31,6 @@
     </tbody>
 </table>
 
-<my-pagination
-  (goPage)="goToPage($event)"
-  (goNext)="onNext()"
-  (goPrev)="onPrev()"
-  [pagesToShow]="7"
-  [page]="page"
-  [perPage]="limit"
-  [count]="total">
+<my-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="7" [page]="page" [perPage]="limit"
+    [count]="total">
 </my-pagination>
-
-

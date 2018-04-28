@@ -18,6 +18,11 @@ export class PaginationComponent {
 
   constructor() { }
 
+
+  /**
+   * Function gets 
+   * @return {undefined}
+   */
   getMin(): number {
     return ((this.perPage * this.page) - this.perPage) + 1;
   }

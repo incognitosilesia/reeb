@@ -12,7 +12,7 @@ import { Beer } from "../beer.interface";
   encapsulation: ViewEncapsulation.None
 })
 export class BeerDetailsComponent implements OnInit {
-  beer:Beer;
+  beer: Beer;
   foods: string[];
   spinner: boolean = false;
 
@@ -25,14 +25,20 @@ export class BeerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getBeerDetails();
+  }
+
+  /**
+   * Function gets chosen beer from service
+   * @return {undefined}
+   */
+  getBeerDetails(): void {
     this.activeRoute.params.subscribe(params => {
       let id = params["id"];
       this.beerService.getBeerStream(id).subscribe(beer => {
-        console.log(beer);
         if (beer) {
           this.beer = beer[0];
           this.foods = this.beer.food_pairing;
-          console.log(this.beer.food_pairing);
           this.spinner = false;
         }
       });
@@ -43,7 +49,7 @@ export class BeerDetailsComponent implements OnInit {
    * Function redirects to the list of beers
    * @returns {undefined}
    */
-  backToList() {
+  backToList(): void {
     this.router.navigate(["/"]);
   }
 }

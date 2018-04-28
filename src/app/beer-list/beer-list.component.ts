@@ -22,7 +22,12 @@ export class BeerListComponent implements OnInit {
   ngOnInit() {
     this.getBeers();
   }
-  getBeers() {
+
+  /**
+   * Function gets beers list from service
+   * @return {undefined}
+   */
+  getBeers(): void {
     this.loading = true;
     this.spinner = true;
     this.BeerService.getBeerList(this.page).subscribe(beers => {
@@ -35,24 +40,36 @@ export class BeerListComponent implements OnInit {
 
   /**
    * Function redirects to chosen beer page
-   * @param {object}
+   * @param {object} beer
    * @return {undefined}
    */
-  showDetails(beer: Beer) {
-    console.log(typeof beer, beer);
+  showDetails(beer: Beer): void {
     this.router.navigate(["details", beer.id]);
   }
 
+  /**
+   * Function for pagination: sets the page variable and calls function getBeers;
+   * @param {number} n
+   * @return {undefined}
+   */
   goToPage(n: number): void {
     this.page = n;
     this.getBeers();
   }
 
+  /**
+   * Function for pagination: increases the page variable and calls function getBeers;
+   * @return {undefined}
+   */
   onNext(): void {
     this.page++;
     this.getBeers();
   }
 
+  /**
+   * Function for pagination: decreases the page variable and calls function getBeers;
+   * @return {undefined}
+   */
   onPrev(): void {
     this.page--;
     this.getBeers();

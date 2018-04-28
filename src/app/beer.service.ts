@@ -10,31 +10,31 @@ export class BeerService {
   beerApiUrl: string = "https://api.punkapi.com/v2/beers";
   beerStream$ = new Subject<Beer>();
   beer;
+  perPage: number = 25;
 
   /**
-   * Function represents the list of beers from PunkApi
+   * Function gest the list of beers from PunkApi
+   * @param {number} page
+   * @param {number} perPage - 
    * @returns {Observable}<Beer[]> 
    */
-  getBeerList(page):Observable<Beer[]> {
-    console.log(page);
-    return this.http.get<Beer[]>(`${this.beerApiUrl}?page=${page}&per_page=25`);
+  getBeerList(page:number): Observable<Beer[]> {
+    return this.http.get<Beer[]>(`${this.beerApiUrl}?page=${page}&per_page=${this.perPage}`);
   }
 
-    /**
+  /**
    * Function represents chosen/clicked by user single beer
    * @param {string} id
    * @returns {Subscription}
    */
-  getBeer(id: string):Subscription{
+  getBeer(id: string): Subscription {
     return this.http.get(`${this.beerApiUrl}/${id}`).subscribe(beer => {
       this.beer = beer;
       this.beerStream$.next(this.beer);
     });
-    
   }
 
-
-    /**
+  /**
    * Function represents chosen/clicked by user single beer
    * @param {string} id
    * @returns {Observable} <Beer>
