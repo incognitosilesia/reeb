@@ -1,9 +1,9 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
-  selector: 'my-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  selector: "my-pagination",
+  templateUrl: "./pagination.component.html",
+  styleUrls: ["./pagination.component.scss"]
 })
 export class PaginationComponent {
   @Input() page: number;
@@ -12,49 +12,51 @@ export class PaginationComponent {
   @Input() loading: boolean;
   @Input() pagesToShow: number;
 
-  @Output() goPrev = new EventEmitter<boolean>();
-  @Output() goNext = new EventEmitter<boolean>();
-  @Output() goPage = new EventEmitter<number>();
+  @Output() goPrev: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() goNext: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() goPage: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
-
+  constructor() {}
 
   /**
-   * Function gets 
+   * Function calls event emitter onPage with n parameter which is a chosen page
+   * @param {number} n
    * @return {undefined}
    */
-  getMin(): number {
-    return ((this.perPage * this.page) - this.perPage) + 1;
-  }
-
-  getMax(): number {
-    let max = this.perPage * this.page;
-    if (max > this.count) {
-      max = this.count;
-    }
-    return max;
-  }
-
   onPage(n: number): void {
     this.goPage.emit(n);
   }
 
+  /**
+   * Function calls event emitter goPrev
+   * @param {boolean}
+   * @return {undefined}
+   */
   onPrev(): void {
     this.goPrev.emit(true);
   }
 
+  /**
+   * Function calls event emitter goNext
+   * @param {boolean} next
+   * @return {undefined}
+   */
   onNext(next: boolean): void {
     this.goNext.emit(next);
   }
 
-  totalPages(): number {
-    return Math.ceil(this.count / this.perPage) || 0;
-  }
-
+  /**
+   * Function returns true if result of multiplication current page by a number of beer per page is bigger than a total amount of beers 
+   * @return {boolean}
+   */
   lastPage(): boolean {
     return this.perPage * this.page > this.count;
   }
 
+  /**
+   * Function returns pages to display 
+   * @return {[]number} pages
+   */
   getPages(): number[] {
     const c = Math.ceil(this.count / this.perPage);
     const p = this.page || 1;
@@ -75,6 +77,7 @@ export class PaginationComponent {
       }
     }
     pages.sort((a, b) => a - b);
+    console.log(pages);
     return pages;
   }
 }

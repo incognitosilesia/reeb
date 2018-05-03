@@ -1,13 +1,16 @@
 # Beer
 
-The application display the list of beers from https://punkapi.com with information about: id, name, tagline, first brewed, ABV, IBU, EBC.
-By clicking chosen position you will be redirect to beer's page with description, brewers tips, beer's image, food pairing.
+The application displays the list of beers from https://punkapi.com with information about: id, name, tagline, first brewed, ABV, IBU, EBC.
+There are taken 234 beer units.
+Results are paginated: 25 beers per page.
+
+By clicking chosen position you will be redirected to beer's page with description, brewers tips, beer's image, food pairing.
 You can back to the main list by clicking "back to the list" button.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
 ## Installation
-You need node and angular-cli to use this project.
+You need node, npm and angular-cli to use this project.
 In the root directory of project run
 `npm install`
 
@@ -17,7 +20,7 @@ then:
 
 ## Development server
 
- Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ The application will be automatically navigated to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Contribution
 

@@ -34,7 +34,7 @@ export class BeerListComponent implements OnInit {
       this.beers = beers;
       this.spinner = false;
       this.loading = false;
-      this.total = 700;
+      this.total = 234;
     });
   }
 
