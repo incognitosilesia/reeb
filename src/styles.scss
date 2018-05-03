@@ -137,7 +137,6 @@ table {
 
 $gold: #c49e5d;
 
-
 body {
   font-family: "Alegreya Sans", sans-serif;
   font-size: 16px;
@@ -189,8 +188,7 @@ h1.invitation {
   tr {
     border-bottom: 1px solid #c49e5d;
     margin: 20px 0;
-    
-}
+  }
 }
 
 /*pagination*/
@@ -303,20 +301,20 @@ h1.invitation {
 
 //pagination
 
-.pagination{
+.pagination {
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-  
-  .description{
+
+  .description {
     margin: 20px auto;
   }
 
-  .numbers{
+  .numbers {
     margin: 20px auto;
   }
 
-  button{
+  button {
     margin-right: 10px;
     padding: 5px 10px;
     background-color: #fff;
@@ -325,56 +323,63 @@ h1.invitation {
     outline: none;
     font-family: "Alegreya Sans", sans-serif;
     cursor: pointer;
-
   }
 
-  .active{
+  .active {
     background-color: $gold;
     color: #fff;
     font-weight: 600;
   }
 }
 
+@media (max-width: 700px) {
+  .beer-details {
+    flex-direction: column;
+  }
 
-@media (max-width: 700px){
-    .beer-table th{
-         width:24%;
+  .beer-image figure {
+    margin-bottom: 30px;
 
-         &.short{
-             width: 6%;
-         }
+    img {
+      width: 100px;
     }
-    
-    
-    .beer-table td{
-        width: 24%;
+  }
 
-                 &.short{
-             width: 6%;
-         }
+  .beer-table th {
+    width: 24%;
+
+    &.short {
+      width: 6%;
     }
+  }
+
+  .beer-table td {
+    width: 24%;
+
+    &.short {
+      width: 6%;
+    }
+  }
 }
 
+@media (max-width: 615px) {
+  .beer-table th {
+    font-size: 90%;
+    width: 20%;
+    padding: 5px 15px;
 
-@media (max-width: 615px){
-    .beer-table th{
-        font-size: 90%;
-         width:20%;
-         padding: 5px 15px;
-
-         &.short{
-             width: 5%;
-         }
+    &.short {
+      width: 5%;
     }
-    
-    
-    .beer-table td{
-        width: 20%;
-        font-size: 90%;
-        padding: 5px 15px;
+  }
 
-                 &.short{
-             width: 5%;
-         }
+  .beer-table td {
+    width: 20%;
+    font-size: 90%;
+    padding: 5px 15px;
+
+    &.short {
+      width: 5%;
     }
+  }
 }
