@@ -3,14 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
-import { BeerService } from './beer.service';
+import { BeerService } from './services/beer.service';
 import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
@@ -27,17 +26,17 @@ import { PaginationComponent } from './pagination/pagination.component';
     HttpClientModule,
       RouterModule.forRoot([
         {
-          path: "",
+          path: '',
           component: BeerListComponent
         },
         {
-          path: "details/:id",
+          path: 'details/:id',
           component: BeerDetailsComponent
         },
         {
-          path: "**",
-          redirectTo: "/",
-          pathMatch: "full"
+          path: '**',
+          redirectTo: '/',
+          pathMatch: 'full'
         }
     
   ])

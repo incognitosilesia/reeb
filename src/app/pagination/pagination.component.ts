@@ -1,9 +1,9 @@
-import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: "my-pagination",
-  templateUrl: "./pagination.component.html",
-  styleUrls: ["./pagination.component.scss"]
+  selector: 'my-pagination',
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
   @Input() page: number;
@@ -23,7 +23,7 @@ export class PaginationComponent {
    * @param {number} n
    * @return {undefined}
    */
-  onPage(n: number): void {
+  public onPage(n: number): void {
     this.goPage.emit(n);
   }
 
@@ -32,7 +32,7 @@ export class PaginationComponent {
    * @param {boolean}
    * @return {undefined}
    */
-  onPrev(): void {
+  public onPrev(): void {
     this.goPrev.emit(true);
   }
 
@@ -41,7 +41,7 @@ export class PaginationComponent {
    * @param {boolean} next
    * @return {undefined}
    */
-  onNext(next: boolean): void {
+  public onNext(next: boolean): void {
     this.goNext.emit(next);
   }
 
@@ -49,7 +49,7 @@ export class PaginationComponent {
    * Function returns true if result of multiplication current page by a number of beer per page is bigger than a total amount of beers 
    * @return {boolean}
    */
-  lastPage(): boolean {
+  public lastPage(): boolean {
     return this.perPage * this.page > this.count;
   }
 
@@ -57,7 +57,7 @@ export class PaginationComponent {
    * Function returns pages to display 
    * @return {[]number} pages
    */
-  getPages(): number[] {
+  public getPages(): number[] {
     const c = Math.ceil(this.count / this.perPage);
     const p = this.page || 1;
     const pagesToShow = this.pagesToShow || 9;
@@ -77,7 +77,6 @@ export class PaginationComponent {
       }
     }
     pages.sort((a, b) => a - b);
-    console.log(pages);
     return pages;
   }
 }

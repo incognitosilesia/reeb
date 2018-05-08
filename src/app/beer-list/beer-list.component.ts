@@ -1,21 +1,20 @@
-import { BeerService } from "./../beer.service";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Beer } from "../beer.interface";
+import { BeerService } from '../services/beer.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Beer } from '../models/beer.interface';
 
 @Component({
-  selector: "app-beer-list",
-  templateUrl: "./beer-list.component.html",
-  styleUrls: ["./beer-list.component.scss"]
+  selector: 'app-beer-list',
+  templateUrl: './beer-list.component.html',
+  styleUrls: ['./beer-list.component.scss']
 })
 export class BeerListComponent implements OnInit {
-  beers: Beer[];
-  p: number = 1;
-  spinner: boolean = false;
-  loading: boolean = false;
-  total: number = 0;
-  page: number = 1;
-  limit: number = 25;
+  public beers: Beer[];
+  public p: number = 1;
+  public loading: boolean = false;
+  public total: number = 0;
+  public page: number = 1;
+  public limit: number = 10;
 
   constructor(private BeerService: BeerService, private router: Router) {}
 
@@ -27,12 +26,10 @@ export class BeerListComponent implements OnInit {
    * Function gets beers list from service
    * @return {undefined}
    */
-  getBeers(): void {
+  public getBeers(): void {
     this.loading = true;
-    this.spinner = true;
     this.BeerService.getBeerList(this.page).subscribe(beers => {
       this.beers = beers;
-      this.spinner = false;
       this.loading = false;
       this.total = 234;
     });
@@ -43,8 +40,8 @@ export class BeerListComponent implements OnInit {
    * @param {object} beer
    * @return {undefined}
    */
-  showDetails(beer: Beer): void {
-    this.router.navigate(["details", beer.id]);
+  public showDetails(beer: Beer): void {
+    this.router.navigate(['details', beer.id]);
   }
 
   /**
@@ -52,7 +49,7 @@ export class BeerListComponent implements OnInit {
    * @param {number} n
    * @return {undefined}
    */
-  goToPage(n: number): void {
+  public goToPage(n: number): void {
     this.page = n;
     this.getBeers();
   }
@@ -61,7 +58,7 @@ export class BeerListComponent implements OnInit {
    * Function for pagination: increases the page variable and calls function getBeers;
    * @return {undefined}
    */
-  onNext(): void {
+  public onNext(): void {
     this.page++;
     this.getBeers();
   }
@@ -70,7 +67,7 @@ export class BeerListComponent implements OnInit {
    * Function for pagination: decreases the page variable and calls function getBeers;
    * @return {undefined}
    */
-  onPrev(): void {
+  public onPrev(): void {
     this.page--;
     this.getBeers();
   }
